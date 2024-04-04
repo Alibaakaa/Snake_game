@@ -1,10 +1,15 @@
-#include "control.h"
 #include "game.h"
-#include "view.h"
+#include "tview.h"
 
-int main ()
-{
-    Game g;
-    View v;
-    Control c;
+#include <memory>
+
+int main() {
+    // TODO: replace with view selection
+    std::unique_ptr<View> view(new Tview());
+
+    auto [width, height] = view->getSize();
+    Game game(width, height);
+    view->runGame(game);
+    
+    return 0;
 }
