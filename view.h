@@ -1,5 +1,6 @@
 #pragma once
 
+#include "control.h"
 #include "game.h"
 
 #include <utility>
@@ -12,8 +13,8 @@ public:
     void runGame(Game& game);
 
 protected:
-    virtual bool isOpen() const = 0;
-    virtual void handleEvents() = 0;
-    virtual void drawFrame() = 0;
+    virtual bool isOpen(Game& game) const = 0;
+    virtual void handleEvents(Control& control) = 0;
+    virtual void drawFrame(Game& game) = 0;
 };
  

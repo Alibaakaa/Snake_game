@@ -16,3 +16,11 @@ std::pair<int, int> Snake::move(bool hasEaten) {
     m_body.emplace_front(headX + dx, headY + dy);
     if (!hasEaten) m_body.pop_back();
 }
+
+const std::list<std::pair<int, int>>& Snake::getBody() const {
+    return m_body;
+}
+
+Snake::Direction Snake::getDirection() const {
+    return m_direction;
+}

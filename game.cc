@@ -32,6 +32,18 @@ bool Game::isAlive() const {
     return m_snakeAlive;
 }
 
+const std::list<std::pair<int, int>>& Game::getSnakeBody() const {
+    return m_snake.getBody();
+}
+
+const std::list<std::pair<int, int>>& Game::getRabbits() const {
+    return m_rabbits;
+}
+
+Snake::Direction Game::getSnakeDirection() const {
+    return m_snake.getDirection();
+}
+
 std::pair<int, int> Game::getRandomCoordinate() const {
     std::uniform_int_distribution widthDistrib(0, m_width - 1);
     std::uniform_int_distribution heightDistrib(0, m_height - 1);

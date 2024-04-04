@@ -14,6 +14,10 @@ public:
     void update();
     void setSnakeDirection(Snake::Direction direction);
     bool isAlive() const;
+
+    const std::list<std::pair<int, int>>& getSnakeBody() const;
+    const std::list<std::pair<int, int>>& getRabbits() const;
+    Snake::Direction getSnakeDirection() const;
     
 private:
     Snake m_snake;

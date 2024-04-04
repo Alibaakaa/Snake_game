@@ -20,6 +20,9 @@ public:
 
     std::pair<int, int> move(bool hasEaten);
 
+    const std::list<std::pair<int, int>>& getBody() const;
+    Direction getDirection() const;
+
 private:
     std::list<std::pair<int, int>> m_body;
     Direction m_direction;
