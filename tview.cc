@@ -4,6 +4,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <poll.h>
+#include <string>
 
 Tview::Tview(): m_isOpen(true) {
     tcgetattr(0, &m_stateBuffer);
@@ -52,12 +53,12 @@ void Tview::drawFrame(Game& game) {
 }
 
 void Tview::drawSnake(const Game& game) {
-    static char HEAD[4] = {'⤊', '⤋', '⇚', '⇛'};
+    static std::string HEAD[4] = {"⤊", "⤋", "⇚", "⇛"};
     bool isHead = true;
     Snake::Direction dir = game.getSnakeDirection();
     for (auto [x, y] : game.getSnakeBody()) {
-        char sym = isHead ? HEAD[static_cast<int>(dir)] : '◉';
-        printf("\e[%d;%dH\e[96m%c]", x, y, sym);
+        std::string sym = isHead ? HEAD[static_cast<int>(dir)] : "◉";
+        printf("\e[%d;%dH\e[96m%s]", x, y, sym.c_str());
         isHead = false;
     }
 }

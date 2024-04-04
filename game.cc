@@ -1,7 +1,7 @@
 #include "game.h"
 
 Game::Game(int width, int height)
-    : m_width(width), m_height(height), m_snake(width / 2, height / 2) {
+    : m_snake(width / 2, height / 2), m_width(width), m_height(height) {
     std::random_device randomDevice;
     m_randomGenerator.seed(randomDevice());
 
@@ -17,7 +17,7 @@ void Game::update() {
         m_snakeAlive = false;
     }
     m_snakeHasEaten = false;
-    auto it = std::find(m_rabbits.begin(), m_rabbits.end(), { headX, headY });
+    auto it = std::find(m_rabbits.begin(), m_rabbits.end(), std::make_pair(headX, headY));
     if (it != m_rabbits.end()) {
         m_snakeHasEaten = true;
         m_rabbits.erase(it);
