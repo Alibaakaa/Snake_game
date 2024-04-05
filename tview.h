@@ -12,7 +12,7 @@ public:
     std::pair<int, int> getSize() const override;
 
 protected:
-    bool isOpen(Game& game) const override;
+    bool isOpen() const override;
     void handleEvents(Control& control) override;
     void drawFrame(Game& game) override;
 

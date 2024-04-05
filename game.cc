@@ -1,7 +1,7 @@
 #include "game.h"
 
 Game::Game(int width, int height)
-    : m_snake(width / 2, height / 2), m_width(width), m_height(height) {
+    : m_snake(width / 2, height / 2), m_width(width), m_height(height), m_snakeAlive(true) {
     std::random_device randomDevice;
     m_randomGenerator.seed(randomDevice());
 

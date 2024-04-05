@@ -25,7 +25,7 @@ std::pair<int, int> Tview::getSize() const {
     return { win_size.ws_row, win_size.ws_col };
 }
 
-bool Tview::isOpen(Game& game) const {
+bool Tview::isOpen() const {
     return m_isOpen;
 }
 

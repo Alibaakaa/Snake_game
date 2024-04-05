@@ -13,7 +13,7 @@ public:
     void runGame(Game& game);
 
 protected:
-    virtual bool isOpen(Game& game) const = 0;
+    virtual bool isOpen() const = 0;
     virtual void handleEvents(Control& control) = 0;
     virtual void drawFrame(Game& game) = 0;
 };
