@@ -23,4 +23,5 @@ private:
     void clear();
     void drawSnake(const Game& game);
     void drawRabbits(const Game& game);
+    void move(int x, int y);
 };

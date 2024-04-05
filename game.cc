@@ -21,6 +21,8 @@ void Game::update() {
     if (it != m_rabbits.end()) {
         m_snakeHasEaten = true;
         m_rabbits.erase(it);
+        auto [x, y] = getRandomCoordinate();
+        m_rabbits.emplace_back(x, y);
     }
 }
 

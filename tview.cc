@@ -22,7 +22,7 @@ Tview::~Tview() {
 std::pair<int, int> Tview::getSize() const {
     winsize win_size;
     ioctl(STDOUT_FILENO, TIOCGWINSZ, &win_size);
-    return { win_size.ws_row, win_size.ws_col };
+    return { win_size.ws_col, win_size.ws_row };
 }
 
 bool Tview::isOpen() const {
@@ -45,10 +45,12 @@ void Tview::handleEvents(Control& control) {
 void Tview::drawFrame(Game& game) {
     game.update();
     if (!game.isAlive()) m_isOpen = false;
+    auto [width, height] = getSize();
 
     clear();
     drawSnake(game);
     drawRabbits(game);
+    move(height, width);
     fflush(stdout);
 }
 
@@ -58,15 +60,19 @@ void Tview::drawSnake(const Game& game) {
     Snake::Direction dir = game.getSnakeDirection();
     for (auto [x, y] : game.getSnakeBody()) {
         std::string sym = isHead ? HEAD[static_cast<int>(dir)] : "◉";
-        printf("\e[%d;%dH\e[96m%s]", x, y, sym.c_str());
+        printf("\e[%d;%dH\e[96m%s", y, x, sym.c_str());
         isHead = false;
     }
 }
 
 void Tview::drawRabbits(const Game& game) {
     for (auto [x, y] : game.getRabbits()) {
-        printf("\e[%d;%dH\e[96m🐇]", x, y);
+        printf("\e[%d;%dH\e[96m🐇", y, x);
     }
+}
+
+void Tview::move(int x, int y) {
+    std::cout << "\e[" << x << ";" << y << "H";
 }
 
 void Tview::clear() {
