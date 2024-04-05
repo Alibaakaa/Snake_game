@@ -15,6 +15,7 @@ std::pair<int, int> Snake::move(bool hasEaten) {
     auto [headX, headY] = m_body.front();
     m_body.emplace_front(headX + dx, headY + dy);
     if (!hasEaten) m_body.pop_back();
+    return m_body.front();
 }
 
 const std::list<std::pair<int, int>>& Snake::getBody() const {

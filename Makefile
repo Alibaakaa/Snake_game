@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -O0 -Wall -g -std=c++17
+CXXFLAGS = -O0 -Wall -g -std=c++20 -Wextra -fsanitize=address, undefined
 OBJECTS = control.o game.o main.o snake.o tview.o view.o
 TARGET =snake
 
